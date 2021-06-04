@@ -9,7 +9,7 @@
         ><Icon class="first-level-icon" name="instagram"></Icon
       ></a>
       <a href="" class="vk-icon menu__network"
-        ><Icon class="" name="vk"></Icon
+        ><Icon class="first-level-icon" name="vk"></Icon
       ></a>
     </div>
     <div class="menu__info">
@@ -20,7 +20,7 @@
           Москва</span
         >
       </div>
-      <div class="menu__pho">
+      <div class="menu__phone">
         <Icon name="phone" class="second-level-icon"></Icon>
         <span
           >22 3333 333 9 <br />
@@ -76,6 +76,12 @@ body {
     min-height: 48px;
   }
   &__info {
+    display: flex;
+  }
+  &__location, &__phone {
+    display: flex;
+    align-items: center;
+    margin-right: 40px;
   }
 }
 </style>

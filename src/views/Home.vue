@@ -9,7 +9,16 @@
         </div>
       </div>
     </div>
-    <div class="home__right"></div>
+    <div class="home__right">
+      <input
+        type="color"
+        name="colorInp"
+        ref="firstLevelIconColor"
+        value="#c4c4c4"
+        v-on:input="setFirstIconLevelColor()"
+        id="color"
+      />
+    </div>
   </section>
 </template>
 
@@ -19,6 +28,19 @@
 export default {
   name: "Home",
   components: {},
+  computed: {},
+  mounted() {},
+  methods: {
+    setFirstIconLevelColor() {
+      let fli = document.querySelectorAll(".first-level-icon path");
+      fli.forEach((element) => {
+        element.setAttribute(
+          "style",
+          `fill: ${this.$refs.firstLevelIconColor.value}`
+        );
+      });
+    },
+  },
 };
 </script>
 
