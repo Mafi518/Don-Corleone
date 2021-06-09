@@ -58,15 +58,15 @@ body {
   width: 100%;
   margin: 0 auto;
   margin-top: 20px;
-  padding: 0 20px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   &__social {
     display: flex;
     justify-content: space-between;
-    max-width: 30vw;
+    max-width: 50vw;
     width: 100%;
+    padding: 0 40px;
   }
   &__network {
     margin: 0 20px;
@@ -77,6 +77,10 @@ body {
   }
   &__info {
     display: flex;
+    justify-content: space-between;
+    max-width: 50vw;
+    width: 100%;
+    padding: 0 40px;
   }
   &__location, &__phone {
     display: flex;

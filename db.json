@@ -1,0 +1,40 @@
+{
+  "donuts": [
+    {
+      "image": "set-1.png",
+      "name": "Сет “Глазурь”",
+      "price": 690,
+      "article": "D1"
+    },
+    {
+      "image": "set-2.png",
+      "name": "Сет “Проблема”",
+      "price": 720,
+      "article": "D2"
+    },
+    {
+      "image": "set-3.png",
+      "name": "Сет “Ванильный ад”",
+      "price": 550,
+      "article": "D3"
+    },
+    {
+      "image": "set-4.png",
+      "name": "Сет “Карамельный передоз”",
+      "price": 1024,
+      "article": "D4"
+    },
+    {
+      "image": "set-5.png",
+      "name": "Сет “Ассорти”",
+      "price": 512,
+      "article": "D5"
+    },
+    {
+      "image": "set-5.png",
+      "name": "Купи слона",
+      "price": 2048,
+      "article": "D6"
+    }
+  ]
+}
