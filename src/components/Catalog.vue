@@ -1,7 +1,7 @@
 <template>
   <section class="catalog">
     <catalog-item
-      v-for="donut in donuts"
+      v-for="donut in DONUTS"
       :key="donut.article"
       :donut_data="donut"
       @sendDataToParent="sendDataToParent"
@@ -11,59 +11,27 @@
 
 <script>
 import CatalogItem from "@/components/Catalog-item";
+import { mapActions, mapGetters } from "vuex";
 
 export default {
   components: {
     CatalogItem,
   },
   data() {
-    return {
-      donuts: [
-        {
-          image: "set-1.png",
-          name: "Сет “Глазурь”",
-          price: 2100,
-          article: "T1",
-        },
-        {
-          image: "set-2.png",
-          name: "Сет “Дурь”",
-          price: 3150,
-          article: "T2",
-        },
-        {
-          image: "set-3.png",
-          name: "Сет “Кийосаки”",
-          price: 4200,
-          article: "T3",
-        },
-        {
-          image: "set-4.png",
-          name: "Сет “Лид”",
-          price: 5300,
-          article: "T4",
-        },
-        {
-          image: "set-5.png",
-          name: "Сет “Карамель”",
-          price: 6500,
-          article: "T5",
-        },
-        {
-          image: "set-5.png",
-          name: "Сет “Купи слона”",
-          price: 8700,
-          article: "T6",
-        },
-      ],
-    };
+    return {};
   },
-  computed: {},
+  computed: {
+    ...mapGetters(["DONUTS"]),
+  },
   methods: {
     sendDataToParent(data) {
-      console.log(data)
-    }
-  }
+      console.log(data);
+    },
+    ...mapActions(["GET_DONUTS_FROM_API"]),
+  },
+  mounted() {
+    this.GET_DONUTS_FROM_API();
+  },
 };
 </script>
 

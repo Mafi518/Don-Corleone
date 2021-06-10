@@ -35,6 +35,12 @@
       "name": "Купи слона",
       "price": 2048,
       "article": "D6"
+    },
+    {
+      "image": "set-5.png",
+      "name": "Купи слона",
+      "price": 2047,
+      "article": "D6"
     }
   ]
 }
