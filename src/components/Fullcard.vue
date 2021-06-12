@@ -12,7 +12,9 @@
     </div>
     <div
       class="description__image"
-      :style="{'background-image' : 'url(' + require('@/assets/images/set-1.png') + ')'}"
+      :style="{
+        'background-image': 'url(' + require('@/assets/images/set-1.png') + ')',
+      }"
     ></div>
   </article>
 </template>
@@ -24,7 +26,17 @@ export default {
   components: {
     Icon,
   },
-  props: {},
+  props: {
+    full_data: {
+      type: Array,
+      default() {
+        return [];
+      },
+    },
+  },
+  mounted() {
+    console.log(this.full_data);
+  },
 };
 </script>
 
@@ -75,6 +87,6 @@ export default {
     transform: translateY(-50%);
     background-repeat: no-repeat;
     background-position: right;
-}
+  }
 }
 </style>

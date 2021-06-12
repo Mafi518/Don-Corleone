@@ -29,6 +29,7 @@ export default {
   height: 100vh;
   background-color: #fff;
   z-index: 11;
+  display: none;
   &__image {
     max-width: 200px;
     max-height: 200px;
