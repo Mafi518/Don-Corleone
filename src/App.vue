@@ -41,9 +41,7 @@ export default {
   components: {
     Icon,
   },
-  mounted() {
-    
-  },
+  mounted() {},
 };
 </script>
 
@@ -85,7 +83,8 @@ body {
     width: 100%;
     padding: 0 40px;
   }
-  &__location, &__phone {
+  &__location,
+  &__phone {
     display: flex;
     align-items: center;
     margin-right: 40px;

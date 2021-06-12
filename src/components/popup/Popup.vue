@@ -1,33 +1,14 @@
 <template>
-  <article class="description popup" ref="close">
+  <article class="description popup">
     <slot></slot>
   </article>
 </template>
 
 <script>
 export default {
-  methods: {
-    closePopup() {
-      this.$emit("closePopup");
-    },
-    cartButtonAction() {
-      this.$emit("cartButtonAction");
-    },
-  },
+  methods: {},
   components: {},
-  mounted() {
-    let vm = this;
-    document.addEventListener("click", function (item) {
-      if (
-        item.target.parentNode === vm.$refs["close"] ||
-        item.target === vm.$refs["close"]
-      ) {
-        console.log("true");
-      } else if (item.target.parentNode != vm.$refs["close"]) {
-        console.log("false");
-      }
-    });
-  },
+  mounted() {},
 };
 </script>
 
