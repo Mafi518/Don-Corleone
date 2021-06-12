@@ -1,5 +1,4 @@
 export default {
-
   INCREMENT_CART_ITEM({ commit }, index) {
     commit("INCREMENT", index);
   },

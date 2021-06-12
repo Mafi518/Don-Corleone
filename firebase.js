@@ -9,7 +9,7 @@ var firebaseConfig = {
   projectId: "corleonedb-b15cf",
   storageBucket: "corleonedb-b15cf.appspot.com",
   messagingSenderId: "371868963140",
-  appId: "1:371868963140:web:85b10269c6f39209828711"
+  appId: "1:371868963140:web:85b10269c6f39209828711",
 };
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);

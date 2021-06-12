@@ -1,5 +1,5 @@
 <template>
-  <article class="description fake" >
+  <article class="description fake">
     <h1 class="description__title">Сет “Глазурь”</h1>
     <p class="description__subtitle">
       Пышные пончики с сладкой глазурью со вкусом клубники и шоколада,
@@ -19,10 +19,8 @@
 </template>
 
 <script>
-
 export default {
-  components: {
-  },
+  components: {},
   props: {},
 };
 </script>

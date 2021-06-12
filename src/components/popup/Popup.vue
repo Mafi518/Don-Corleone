@@ -12,7 +12,7 @@ export default {
 };
 </script>
 
-<style lang="scss" >
+<style lang="scss">
 .popup {
   width: 50vw;
   height: 100vh;
