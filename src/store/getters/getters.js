@@ -5,4 +5,7 @@ export default {
   CART(state) {
     return state.cart;
   },
+  INFO(state) {
+    return state.info;
+  }
 };

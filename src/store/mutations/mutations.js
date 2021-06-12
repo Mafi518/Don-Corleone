@@ -29,4 +29,7 @@ export default {
       state.cart[index].quantity--;
     }
   },
+  SET_INFO: (state, donut) => {
+    state.info.push(donut)
+  }
 };

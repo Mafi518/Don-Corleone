@@ -5,6 +5,7 @@
       :key="donut.article"
       :donut_data="donut"
       @addToCart="addToCart"
+      @addFullInfo="addFullInfo"
     ></catalog-item>
   </section>
 </template>
@@ -27,8 +28,10 @@ export default {
     addToCart(data) {
       this.ADD_TO_CART(data);
     },
-
-    ...mapActions(["GET_DONUTS_FROM_API", "ADD_TO_CART"]),
+    addFullInfo(data) {
+      this.ADD_FULL_INFO(data)
+    },
+    ...mapActions(["GET_DONUTS_FROM_API", "ADD_TO_CART", "ADD_FULL_INFO"]),
   },
   mounted() {
     this.GET_DONUTS_FROM_API();

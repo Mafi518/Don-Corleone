@@ -30,6 +30,7 @@
     <div class="card__footer">
       <p class="card__price">{{ donut_data.price }} ₽</p>
     </div>
+    <button @click="addFullInfo" >dasdsadsadasdas</button>
   </article>
 </template>
 
@@ -51,6 +52,9 @@ export default {
   methods: {
     addToCart() {
       this.$emit("addToCart", this.donut_data);
+    },
+    addFullInfo() {
+      this.$emit("addFullInfo", this.donut_data)
     },
   },
   mounted() {},

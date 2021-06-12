@@ -1,7 +1,7 @@
 <template>
   <section class="home" id="home">
     <div class="home__left">
-      <fullcard></fullcard>
+      <fullcard v-if="INFO.length"></fullcard>
     </div>
     <div class="home__catalog">
       <div class="home__wrapper">
@@ -27,7 +27,7 @@ export default {
     Cart,
   },
   computed: {
-    ...mapGetters(["CART"]),
+    ...mapGetters(["CART", "INFO"]),
   },
   mounted() {},
   methods: {

@@ -11,4 +11,7 @@ export default {
   DELETE_FROM_CART({ commit }, index) {
     commit("REMOVE_FROM_CART", index);
   },
+  ADD_FULL_INFO({ commit }, donut) {
+    commit("SET_INFO", donut)
+  }
 };

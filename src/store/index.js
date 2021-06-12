@@ -10,6 +10,7 @@ export default createStore({
   state: {
     donuts: [],
     cart: [],
+    info: []
   },
   mutations,
   actions,
