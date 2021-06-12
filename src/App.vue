@@ -51,7 +51,7 @@ body {
   height: 100vh;
 }
 #nav {
-  z-index: 9999;
+  z-index: 10;
 }
 .menu {
   position: absolute;

@@ -1,37 +1,18 @@
-import axios from "axios";
 import { createStore } from "vuex";
+import mutations from './mutations/mutations'
+import getters from './getters/getters'
+import apiRequests from "./actions/api-requests";
+import commonActions from "./actions/actions";
+
+const actions = {...commonActions, ...apiRequests}
 
 export default createStore({
   state: {
     donuts: [],
+    cart: [],
   },
-  mutations: {
-    SET_DONUTS_TO_STATE: (state, donuts) => {
-      state.donuts = donuts;
-    },
-  },
-  actions: {
-    GET_DONUTS_FROM_API({ commit }) {
-      return axios(
-        "https://corleonedb-b15cf-default-rtdb.firebaseio.com/donuts.json",
-        {
-          method: "GET",
-        }
-      )
-        .then((donuts) => {
-          commit("SET_DONUTS_TO_STATE", donuts.data);
-          return donuts;
-        })
-        .catch((error) => {
-          console.log(error);
-          return error;
-        });
-    },
-  },
-  getters: {
-    DONUTS(state) {
-      return state.donuts;
-    }
-  },
+  mutations,
+  actions,
+  getters,
   modules: {},
 });

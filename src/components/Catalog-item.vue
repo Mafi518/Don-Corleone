@@ -1,12 +1,12 @@
 <template>
-  <article class="card">
+  <article class="card" @click="showFullInfo">
     <div class="card__head">
       <img
         :src="require('@/assets/images/' + donut_data.image)"
         alt=""
         class="card__image"
       />
-      <button class="card__toCart" @click="sendDataToParent">
+      <button class="card__toCart" @click="addToCart">
         <svg
           width="32"
           height="32"
@@ -44,10 +44,14 @@ export default {
       },
     },
   },
+  data() {
+    return {};
+  },
   methods: {
-    sendDataToParent() {
-      this.$emit("sendDataToParent", this.donut_data.article);
+    addToCart() {
+      this.$emit("addToCart", this.donut_data);
     },
+    showFullInfo() {},
   },
 };
 </script>
@@ -57,12 +61,12 @@ export default {
   background-color: $accent;
   border-radius: 30px;
   max-width: 377px;
-  padding: 20px;
+  padding: 20px !important;
   width: 100%;
   min-height: 354px;
   max-height: 354px;
   font-size: 20px;
-  margin-top: 80px;
+  margin-top: 80px !important;
   &:nth-child(-n + 2) {
     margin-top: 0;
   }

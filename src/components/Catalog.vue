@@ -4,7 +4,7 @@
       v-for="donut in DONUTS"
       :key="donut.article"
       :donut_data="donut"
-      @sendDataToParent="sendDataToParent"
+      @addToCart="addToCart"
     ></catalog-item>
   </section>
 </template>
@@ -24,10 +24,10 @@ export default {
     ...mapGetters(["DONUTS"]),
   },
   methods: {
-    sendDataToParent(data) {
-      console.log(data);
+    addToCart(data) {
+      this.ADD_TO_CART(data);
     },
-    ...mapActions(["GET_DONUTS_FROM_API"]),
+    ...mapActions(["GET_DONUTS_FROM_API", "ADD_TO_CART"]),
   },
   mounted() {
     this.GET_DONUTS_FROM_API();

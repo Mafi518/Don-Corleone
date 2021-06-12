@@ -4,11 +4,16 @@
       <fullcard></fullcard>
     </div>
     <div class="home__catalog">
-      <div class="fix-block"></div>
       <div class="home__wrapper">
         <catalog></catalog>
       </div>
     </div>
+    <popup></popup>
+    <cart 
+    v-if="CART.length"
+    :cart_data="CART"
+    >
+    </cart>
   </section>
 </template>
 
@@ -16,14 +21,23 @@
 // @ is an alias to /src
 import Fullcard from "@/components/Fullcard";
 import Catalog from "@/components/Catalog";
+import Cart from "../components/Cart.vue";
+import Popup from "@/components/popup/Popup.vue"
+import { mapGetters } from "vuex";
 
 export default {
   name: "Home",
   components: {
     Fullcard,
     Catalog,
+    Cart,
+    Popup,
   },
-  computed: {},
+  computed: {
+    ...mapGetters([
+      'CART'
+    ])
+  },
   mounted() {},
   methods: {
     setFirstIconLevelColor() {
@@ -52,6 +66,7 @@ export default {
   &__catalog {
     padding: 0 40px;
     overflow: auto;
+    padding-top: 100px;
   }
   &__left,
   &__catalog {
@@ -61,7 +76,7 @@ export default {
 }
 .fix-block {
   width: 100%;
-  height: 134px;
+  height: 54px;
   background-color: transparent;
   margin-bottom: 30px;
 }
