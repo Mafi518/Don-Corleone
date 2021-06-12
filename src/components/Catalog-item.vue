@@ -1,4 +1,25 @@
 <template>
+  <popup v-if="isInfoVisible" ref="close">
+    <h1 class="description__title">{{ donut_data.name }}</h1>
+    <p class="description__subtitle">
+      Пышные пончики с сладкой глазурью со вкусом клубники и шоколада,
+      посыпанные крошкой – сытный десерт для вкусного перекуса!
+    </p>
+    <button class="description__structure">Состав</button>
+    <div class="description__buy">
+      <span class="description__price">{{ donut_data.price }} ₽</span>
+      <button class="toCart">
+        <Icon class="first-level-icon" name="toCart" @click="addToCart"></Icon>
+      </button>
+    </div>
+    <div
+      class="description__image"
+      :style="{
+        'background-image':
+          'url(' + require(`@/assets/images/${donut_data.image}`) + ')',
+      }"
+    ></div>
+  </popup>
   <article class="card" @click="showFullInfo">
     <div class="card__head">
       <img
@@ -34,7 +55,14 @@
 </template>
 
 <script>
+import Popup from "@/components/popup/Popup";
+import Icon from "@/components/Icon";
+
 export default {
+  components: {
+    Popup,
+    Icon,
+  },
   name: "catalog-item",
   props: {
     donut_data: {
@@ -45,13 +73,23 @@ export default {
     },
   },
   data() {
-    return {};
+    return {
+      isInfoVisible: false,
+    };
   },
   methods: {
     addToCart() {
       this.$emit("addToCart", this.donut_data);
     },
-    showFullInfo() {},
+    showFullInfo() {
+      this.isInfoVisible = true;
+      if (document.querySelector(".fake")) {
+        document.querySelector(".fake").remove();
+      }
+    },
+  },
+  mounted() {
+
   },
 };
 </script>

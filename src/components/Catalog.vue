@@ -27,6 +27,7 @@ export default {
     addToCart(data) {
       this.ADD_TO_CART(data);
     },
+
     ...mapActions(["GET_DONUTS_FROM_API", "ADD_TO_CART"]),
   },
   mounted() {

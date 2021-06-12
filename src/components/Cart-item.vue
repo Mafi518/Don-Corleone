@@ -91,6 +91,7 @@ export default {
     font-size: 20px;
     width: 100%;
     margin-top: 10px;
+    background-color: #fff;
   }
   &__minus {
     left: -20px;

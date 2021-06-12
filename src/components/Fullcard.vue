@@ -1,5 +1,5 @@
 <template>
-  <article class="description">
+  <article class="description fake" >
     <h1 class="description__title">Сет “Глазурь”</h1>
     <p class="description__subtitle">
       Пышные пончики с сладкой глазурью со вкусом клубники и шоколада,
@@ -8,7 +8,6 @@
     <button class="description__structure">Состав</button>
     <div class="description__buy">
       <span class="description__price">265₽</span>
-      <Icon class="first-level-icon" name="toCart"></Icon>
     </div>
     <div
       class="description__image"
@@ -20,23 +19,11 @@
 </template>
 
 <script>
-import Icon from "@/components/Icon";
 
 export default {
   components: {
-    Icon,
   },
-  props: {
-    full_data: {
-      type: Array,
-      default() {
-        return [];
-      },
-    },
-  },
-  mounted() {
-    console.log(this.full_data);
-  },
+  props: {},
 };
 </script>
 
@@ -82,7 +69,7 @@ export default {
     width: 100%;
     min-height: 538px;
     background-size: contain;
-    right: -40px;
+    right: 0px;
     top: 50%;
     transform: translateY(-50%);
     background-repeat: no-repeat;

@@ -8,12 +8,7 @@
         <catalog></catalog>
       </div>
     </div>
-    <popup></popup>
-    <cart 
-    v-if="CART.length"
-    :cart_data="CART"
-    >
-    </cart>
+    <cart v-if="CART.length" :cart_data="CART"> </cart>
   </section>
 </template>
 
@@ -22,7 +17,6 @@
 import Fullcard from "@/components/Fullcard";
 import Catalog from "@/components/Catalog";
 import Cart from "../components/Cart.vue";
-import Popup from "@/components/popup/Popup.vue"
 import { mapGetters } from "vuex";
 
 export default {
@@ -31,12 +25,9 @@ export default {
     Fullcard,
     Catalog,
     Cart,
-    Popup,
   },
   computed: {
-    ...mapGetters([
-      'CART'
-    ])
+    ...mapGetters(["CART"]),
   },
   mounted() {},
   methods: {

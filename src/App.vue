@@ -41,6 +41,9 @@ export default {
   components: {
     Icon,
   },
+  mounted() {
+    
+  },
 };
 </script>
 
