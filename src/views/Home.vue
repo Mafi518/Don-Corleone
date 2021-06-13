@@ -1,7 +1,7 @@
 <template>
   <section class="home" id="home">
     <div class="home__left">
-      <fullcard v-if="INFO.length"></fullcard>
+      <fullcard v-if="INFO.length" :info_data="INFO"></fullcard>
     </div>
     <div class="home__catalog">
       <div class="home__wrapper">

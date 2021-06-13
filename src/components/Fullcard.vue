@@ -1,12 +1,23 @@
 <template>
-  <InfoItem></InfoItem>
+  <InfoItem
+    v-for="item in info_data"
+    :key="item.article"
+    :info_item_data="item"
+  ></InfoItem>
 </template>
 
 <script>
 import InfoItem from '@/components/Info-item'
 
 export default {
-  props: {},
+  props: {
+    info_data: {
+      type: Array,
+      default() {
+        return []
+      }
+    }
+  },
   components: {
     InfoItem
   },

@@ -1,5 +1,5 @@
 <template>
-  <article class="card">
+  <article class="card" @click="addFullInfo">
     <div class="card__head">
       <img
         :src="require('@/assets/images/' + donut_data.image)"
