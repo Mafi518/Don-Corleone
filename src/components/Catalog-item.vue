@@ -30,7 +30,6 @@
     <div class="card__footer">
       <p class="card__price">{{ donut_data.price }} ₽</p>
     </div>
-    <button @click="addFullInfo" >dasdsadsadasdas</button>
   </article>
 </template>
 
@@ -54,7 +53,7 @@ export default {
       this.$emit("addToCart", this.donut_data);
     },
     addFullInfo() {
-      this.$emit("addFullInfo", this.donut_data)
+      this.$emit("addFullInfo", this.donut_data);
     },
   },
   mounted() {},
@@ -72,6 +71,7 @@ export default {
   max-height: 354px;
   font-size: 20px;
   margin-top: 80px !important;
+  cursor: pointer;
   &:nth-child(-n + 2) {
     margin-top: 0;
   }

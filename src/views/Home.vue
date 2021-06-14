@@ -1,6 +1,10 @@
 <template>
-  <section class="home" id="home">
+  <section class="home change-background" id="home">
     <div class="home__left">
+      <div class="don-prompt-1" v-if="INFO.length === 0">
+        <img src="@/assets/images/don-prompt-1.png" alt="">
+        <p>Стоит нажать на один из пончиков...</p>
+      </div>
       <fullcard v-if="INFO.length" :info_data="INFO"></fullcard>
     </div>
     <div class="home__catalog">
@@ -8,7 +12,12 @@
         <catalog></catalog>
       </div>
     </div>
-    <cart v-if="CART.length" :cart_data="CART"> </cart>
+    <button class="cart-icon">
+      <p class="cart-quantity">{{ CART.length }}</p>
+      <icon class="first-level-icon" name="cart" />
+    </button>
+
+    <cart :cart_data="CART"> </cart>
   </section>
 </template>
 
@@ -18,6 +27,7 @@ import Fullcard from "@/components/Fullcard";
 import Catalog from "@/components/Catalog";
 import Cart from "../components/Cart.vue";
 import { mapGetters } from "vuex";
+import Icon from "../components/Icon.vue";
 
 export default {
   name: "Home",
@@ -25,11 +35,25 @@ export default {
     Fullcard,
     Catalog,
     Cart,
+    Icon,
   },
   computed: {
     ...mapGetters(["CART", "INFO"]),
   },
-  mounted() {},
+  mounted() {
+    document.querySelector(".cart-icon").addEventListener("click", function () {
+      let cart = document.querySelector(".cart");
+      cart.style.display = "flex";
+      this.style.display = "none";
+    });
+    document
+      .querySelector(".cart__close")
+      .addEventListener("click", function () {
+        let cartIcon = document.querySelector(".cart-icon");
+        this.parentNode.parentNode.style.display = "none";
+        cartIcon.style.display = "flex";
+      });
+},
   methods: {
     setFirstIconLevelColor() {
       let fli = document.querySelectorAll(".first-level-icon path");
@@ -65,10 +89,42 @@ export default {
     height: 100vh;
   }
 }
-.fix-block {
+
+.cart-icon {
+  position: absolute;
+  bottom: 60px;
+  left: 40px;
+  z-index: 12;
+  cursor: pointer;
+}
+.cart-quantity {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  padding: 6px 10px;
+  border-radius: 50%;
+  background-color: $accent;
+  border: 1px solid $white;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  align-self: center;
+  line-height: 100%;
+}
+.don-prompt-1 {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   width: 100%;
-  height: 54px;
-  background-color: transparent;
-  margin-bottom: 30px;
+  img {
+    margin-bottom: 40px;
+  }
+  p {
+
+  }
 }
 </style>

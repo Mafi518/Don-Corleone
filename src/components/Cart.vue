@@ -88,6 +88,7 @@ export default {
   padding-top: 100px;
   padding-bottom: 140px;
   overflow: auto;
+  display: none;
   &__item {
     display: inline-block;
     margin-left: 20px;

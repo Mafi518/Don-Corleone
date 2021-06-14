@@ -30,6 +30,13 @@ export default {
     }
   },
   SET_INFO: (state, donut) => {
-    state.info.push(donut)
+    if (state.info.length >= 1) {
+      state.info.shift()
+      state.info.push(donut)
+    } else if (state.info.length === 0) {
+      state.info.push(donut)
+    } else {
+      state.info.push(donut)
+    }
   }
 };
