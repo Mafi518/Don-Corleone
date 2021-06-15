@@ -2,7 +2,7 @@
   <section class="home change-background" id="home">
     <div class="home__left">
       <div class="don-prompt-1" v-if="INFO.length === 0">
-        <img src="@/assets/images/don-prompt-1.png" alt="">
+        <img src="@/assets/images/don-prompt-1.png" alt="" />
         <p>Стоит нажать на один из пончиков...</p>
       </div>
       <fullcard v-if="INFO.length" :info_data="INFO"></fullcard>
@@ -12,7 +12,7 @@
         <catalog></catalog>
       </div>
     </div>
-    <button class="cart-icon">
+    <button class="cart-icon" @click="cartShow">
       <p class="cart-quantity">{{ CART.length }}</p>
       <icon class="first-level-icon" name="cart" />
     </button>
@@ -28,6 +28,7 @@ import Catalog from "@/components/Catalog";
 import Cart from "../components/Cart.vue";
 import { mapGetters } from "vuex";
 import Icon from "../components/Icon.vue";
+import gsap from "gsap";
 
 export default {
   name: "Home",
@@ -37,23 +38,19 @@ export default {
     Cart,
     Icon,
   },
+  data() {
+    return {
+      isOpenCart: false,
+    };
+  },
   computed: {
     ...mapGetters(["CART", "INFO"]),
   },
   mounted() {
     document.querySelector(".cart-icon").addEventListener("click", function () {
-      let cart = document.querySelector(".cart");
-      cart.style.display = "flex";
       this.style.display = "none";
     });
-    document
-      .querySelector(".cart__close")
-      .addEventListener("click", function () {
-        let cartIcon = document.querySelector(".cart-icon");
-        this.parentNode.parentNode.style.display = "none";
-        cartIcon.style.display = "flex";
-      });
-},
+  },
   methods: {
     setFirstIconLevelColor() {
       let fli = document.querySelectorAll(".first-level-icon path");
@@ -63,6 +60,18 @@ export default {
           `fill: ${this.$refs.firstLevelIconColor.value}`
         );
       });
+    },
+    cartShow() {
+      if (this.isOpenCart == false) {
+        gsap.fromTo(
+          ".cart",
+          0.5,
+          { transform: "translate(-100%)", display: 'none' },
+          { transform: "translate(0%)", display: 'flex' }
+        );
+      } 
+    },
+    cartHide() {
     },
   },
 };
@@ -124,7 +133,6 @@ export default {
     margin-bottom: 40px;
   }
   p {
-
   }
 }
 </style>

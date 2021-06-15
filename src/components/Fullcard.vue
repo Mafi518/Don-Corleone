@@ -1,30 +1,32 @@
 <template>
-  <InfoItem
-    v-for="item in info_data"
-    :key="item.article"
-    :info_item_data="item"
-  ></InfoItem>
+  <transition-group name="list">
+    <InfoItem
+      v-for="item in info_data"
+      :key="item.article"
+      :info_item_data="item"
+    ></InfoItem>
+  </transition-group>
 </template>
 
 <script>
-import InfoItem from '@/components/Info-item'
+import InfoItem from "@/components/Info-item";
 
 export default {
   props: {
     info_data: {
       type: Array,
       default() {
-        return []
-      }
-    }
+        return [];
+      },
+    },
   },
   components: {
-    InfoItem
+    InfoItem,
   },
   data() {
-    return {}
+    return {};
   },
-  computed: {}
+  computed: {},
 };
 </script>
 
@@ -76,5 +78,31 @@ export default {
     background-repeat: no-repeat;
     background-position: right;
   }
+}
+
+// transitions
+
+.list-enter-from {
+  opacity: 0;
+  transform: scale(0.9);
+}
+.list-enter-to {
+  opacity: 1;
+  transform: scale(1);
+}
+.list-enter-active {
+  transition: all 0.5s ease;
+  transition-delay: 0.1s;
+}
+.list-leave-from {
+  opacity: 1;
+  transform: scale(1);
+}
+.list-leave-to {
+  opacity: 0;
+  transform: scale(0.9);
+}
+.list-leave-active {
+  transition: all 0s ease;
 }
 </style>

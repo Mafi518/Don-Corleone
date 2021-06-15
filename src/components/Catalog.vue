@@ -1,12 +1,14 @@
 <template>
   <section class="catalog">
-    <catalog-item
-      v-for="donut in DONUTS"
-      :key="donut.article"
-      :donut_data="donut"
-      @addToCart="addToCart"
-      @addFullInfo="addFullInfo"
-    ></catalog-item>
+    <transition-group name="catalog">
+      <catalog-item
+        v-for="donut in DONUTS"
+        :key="donut.article"
+        :donut_data="donut"
+        @addToCart="addToCart"
+        @addFullInfo="addFullInfo"
+      ></catalog-item>
+    </transition-group>
   </section>
 </template>
 
@@ -29,7 +31,7 @@ export default {
       this.ADD_TO_CART(data);
     },
     addFullInfo(data) {
-      this.ADD_FULL_INFO(data)
+      this.ADD_FULL_INFO(data);
     },
     ...mapActions(["GET_DONUTS_FROM_API", "ADD_TO_CART", "ADD_FULL_INFO"]),
   },
@@ -44,5 +46,28 @@ export default {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
+}
+
+.catalog-enter-from {
+  opacity: 0;
+  transform: scale(0.9);
+}
+.catalog-enter-to {
+  opacity: 1;
+  transform: scale(1);
+}
+.catalog-enter-active {
+  transition: all 0.5s ease;
+}
+.catalog-leave-from {
+  opacity: 1;
+  transform: scale(1);
+}
+.catalog-leave-to {
+  opacity: 0;
+  transform: scale(0.9);
+}
+.catalog-leave-active {
+  transition: all 0s ease;
 }
 </style>

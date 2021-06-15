@@ -1,7 +1,7 @@
 <template>
   <nav id="nav" class="menu">
     <div class="menu__social">
-      <button class="menu__navigation">
+      <button class="menu__navigation" @click="menuShow">
         <Icon name="navigation" class="first-level-icon"></Icon>
       </button>
       <ul class="menu__list">
@@ -43,21 +43,26 @@
       <Icon name="logo" class="logo second-level-icon"></Icon>
     </div>
   </nav>
-  <router-view />
+  <router-view class="router-view" />
 </template>
 
 <script>
 import Icon from "@/components/Icon";
+import gsap from "gsap";
 
 export default {
   name: "App",
   components: {
     Icon,
   },
+  data() {
+    return {
+      isOpenMenu: false,
+    };
+  },
   methods: {
     setChangedColors() {
       setTimeout(() => {
-        console.log("dasd");
         let getBackgroundColor = localStorage.getItem(
           "changed-background-color"
         );
@@ -85,20 +90,20 @@ export default {
       }, 50);
     },
     createPopup(subtitle) {
-      document.querySelector('#app').insertAdjacentHTML(
+      document.querySelector("#app").insertAdjacentHTML(
         "afterbegin",
         `
-              <div class="popup">
-                тут картинка
-                <p>${subtitle}</p>
-                <button class="popup__button popup__next">Далее</button>
-              </div>
+          <div class="popup">
+            тут картинка
+            <p>${subtitle}</p>
+            <button class="popup__button popup__next">Далее</button>
+          </div>
       `
       );
     },
     showHelloPopup() {
       this.createPopup(
-        "Пышные пончики с сладкой глазурью со вкусом клубники и шоколада",
+        "Пышные пончики с сладкой глазурью со вкусом клубники и шоколада"
       );
       this.createPopup(
         "Пышные пончики с сладкой глазурью со вкусом клубники и "
@@ -112,6 +117,37 @@ export default {
         });
       });
     },
+    menuShow() {
+      if (this.isOpenMenu == false) {
+        this.isOpenMenu = true;
+        gsap.fromTo(".menu__list", 0, { height: "0vh" }, { height: "100vh" });
+        gsap.to(".menu__item", {
+          duration: 1,
+          transform: "scale(1)",
+          stagger: {
+            from: "start",
+            amount: 0.25,
+          },
+        });
+      } else {
+        this.menuHide();
+      }
+    },
+    menuHide() {
+      this.isOpenMenu = false;
+      gsap.fromTo(
+        ".menu__list",
+        0.5,
+        { height: "100vh", delay: 0 },
+        { height: "0vh", delay: 0.5 }
+      );
+      gsap.fromTo(
+        ".menu__item",
+        0.5,
+        { transform: "scale(1)" },
+        { transform: "scale(0)" }
+      );
+    },
   },
   mounted() {
     document
@@ -120,11 +156,15 @@ export default {
         let menuOverlay = document.querySelector(".menu__list");
         let childs = menuOverlay.childNodes;
         childs.forEach((element) => {
-          console.log(element);
+          element;
         });
       });
-    document.addEventListener("DOMContentLoaded", this.setChangedColors);
-    this.showHelloPopup();
+    document.querySelectorAll(".menu__item").forEach((element) => {
+      element.addEventListener("click", this.menuHide);
+    });
+    setInterval(() => {
+      this.setChangedColors();
+    }, 100);
   },
 };
 </script>
@@ -142,7 +182,6 @@ body {
   position: absolute;
   width: 100%;
   margin: 0 auto;
-  margin-top: 20px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -151,7 +190,9 @@ body {
     justify-content: space-between;
     max-width: 50vw;
     width: 100%;
-    padding: 0 40px;
+    height: 100%;
+    padding: 0px 40px;
+    background-color: $accent;
   }
   &__network {
     margin: 0 20px;
@@ -166,7 +207,8 @@ body {
     justify-content: space-between;
     max-width: 50vw;
     width: 100%;
-    padding: 0 40px;
+    padding: 5px 40px;
+    background-color: $white;
   }
   &__location,
   &__phone {
@@ -187,8 +229,9 @@ body {
   &__item {
     background-color: $brown;
     width: 33.333333%;
-    transition: 0.5s;
+    height: 102.2vh;
     transform: scale(0);
+    z-index: 99;
     &:nth-child(1) {
       background-color: $menu-1;
     }
@@ -248,4 +291,6 @@ body {
     border-radius: 30px;
   }
 }
+
+
 </style>

@@ -5,7 +5,6 @@
       Пышные пончики с сладкой глазурью со вкусом клубники и шоколада,
       посыпанные крошкой – сытный десерт для вкусного перекуса!
     </p>
-    <button class="description__structure">Состав</button>
     <div class="description__buy">
       <span class="description__price">{{ info_item_data.price }} ₽</span>
       <button class="toCart">
@@ -46,4 +45,7 @@ export default {
 </script>
 
 <style lang="scss">
+  .description__title {
+    @include h1;
+  }
 </style>
