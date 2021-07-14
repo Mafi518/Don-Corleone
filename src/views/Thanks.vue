@@ -1,7 +1,7 @@
 <template>
   <div class="thanks">
     <img src="@/assets/images/don-hello.png" alt="" />
-    <p>{{userName}}, спасибо за заказ!</p>
+    <p>{{ userName }}, спасибо за заказ!</p>
     <p>В ближайшее время с вами свяжется наш менеджер</p>
   </div>
 </template>
@@ -10,11 +10,10 @@
 export default {
   data() {
     return {
-      userName: localStorage.getItem("thanks-name")
-    }
+      userName: localStorage.getItem("thanks-name"),
+    };
   },
-  mounted() {
-  }
+  mounted() {},
 };
 </script>
 

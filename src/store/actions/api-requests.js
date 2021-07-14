@@ -3,7 +3,7 @@ import axios from "axios";
 export default {
   GET_DONUTS_FROM_API({ commit }) {
     return axios(
-      "https://corleonedb-b15cf-default-rtdb.firebaseio.com/donuts.json",
+      "https://corleone-db-default-rtdb.firebaseio.com/donuts.json",
       {
         method: "GET",
       }

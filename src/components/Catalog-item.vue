@@ -60,7 +60,7 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .card {
   background-color: $accent;
   border-radius: 30px;
@@ -96,8 +96,6 @@ export default {
   &__body {
     margin: 30px 0 20px 0;
   }
-  &__footer {
-  }
   &__image {
     max-width: 189px;
     max-height: 227px;
@@ -123,10 +121,103 @@ export default {
     align-items: center;
     justify-content: space-between;
   }
-  &__description {
-  }
   &__price {
     font-size: 36px;
+  }
+}
+@media (max-width: 1000px) {
+  .card {
+    margin: 20px;
+    min-width: 320px;
+    max-height: 360px;
+    min-height: 320px;
+    margin-top: 0;
+    &__image {
+      max-height: 190px;
+    }
+    &__title {
+      font-size: 22px;
+    }
+    &__description {
+      font-size: 16px;
+    }
+    &__price {
+      font-size: 26px;
+    }
+  }
+}
+@media (max-width: 425px) {
+  .card {
+    max-width: 160px;
+    min-width: 160px;
+    max-height: 260px;
+    min-height: 260px;
+    margin-top: 0 !important;
+    padding: 0px !important;
+    padding-left: 5px !important;
+    &__image {
+      max-height: 110px;
+      margin-top: 0;
+    }
+    &__toCart {
+      top: 0px;
+      right: -5px;
+      height: 100%;
+      border-radius: 30px 0px 30px 0px;
+    }
+    &__title {
+      display: none;
+    }
+    &__head {
+      height: 100%;
+      align-items: flex-start;
+    }
+    &__body {
+      margin: 15px 0 5px 0;
+    }
+    &__description {
+      display: none;
+    }
+    &__price {
+      display: none;
+    }
+  }
+}
+@media (max-width: 320px) {
+  .card {
+    max-width: 160px;
+    min-width: 160px;
+    max-height: 160px;
+    min-height: 160px;
+    margin-top: 0 !important;
+    padding: 0px !important;
+    padding-left: 5px !important;
+    &__image {
+      max-height: 110px;
+      margin-top: 0;
+    }
+    &__toCart {
+      top: 0px;
+      right: -5px;
+      height: 100%;
+      border-radius: 30px 0px 30px 0px;
+    }
+    &__title {
+      display: none;
+    }
+    &__head {
+      height: 100%;
+      align-items: flex-start;
+    }
+    &__body {
+      margin: 15px 0 5px 0;
+    }
+    &__description {
+      display: none;
+    }
+    &__price {
+      display: none;
+    }
   }
 }
 </style>

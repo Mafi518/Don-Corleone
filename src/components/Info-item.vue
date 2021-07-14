@@ -14,7 +14,7 @@
     <div
       class="description__image"
       :style="{
-        'background-image': 
+        'background-image':
           'url(' + require(`@/assets/images/${info_item_data.image}`) + ')',
       }"
     ></div>
@@ -29,23 +29,23 @@ export default {
     info_item_data: {
       type: Object,
       default() {
-        return {}
-      }
-    }
+        return {};
+      },
+    },
   },
   components: {
     // Icon
   },
   methods: {
     infoToCart() {
-      this.$emit('infoToCart')
-    }
-  }
+      this.$emit("infoToCart");
+    },
+  },
 };
 </script>
 
 <style lang="scss">
-  .description__title {
-    @include h1;
-  }
+.description__title {
+  @include h1;
+}
 </style>

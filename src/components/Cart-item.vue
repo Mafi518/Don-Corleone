@@ -82,9 +82,8 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .card {
-  max-height: 424px;
   &__delete {
     padding: 15px 0;
     border-radius: 30px;
@@ -96,6 +95,115 @@ export default {
   &__minus {
     left: -20px;
     border-radius: 30px 0;
+  }
+}
+
+.card {
+  background-color: $accent;
+  border-radius: 30px;
+  max-width: 377px;
+  padding: 20px !important;
+  width: 100%;
+  max-height: 424px;
+  font-size: 20px;
+  margin-top: 110px !important;
+  cursor: pointer;
+
+  &__head {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    &::after {
+      content: "";
+      width: 105px;
+      height: 33px;
+      border-radius: 100%;
+      background-color: #666666;
+      filter: blur(18px);
+      box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.18);
+      z-index: 0;
+      margin-top: -15px;
+    }
+  }
+  &__body {
+    margin: 30px 0 20px 0;
+  }
+  &__image {
+    max-width: 189px;
+    max-height: 227px;
+    margin-top: -80px;
+    position: relative;
+    z-index: 1;
+  }
+  &__toCart {
+    position: absolute;
+    top: -20px;
+    right: -20px;
+    border-radius: 0 30px;
+    background-color: #ffe7d9;
+    width: 68px;
+    height: 68px;
+  }
+  &__title {
+    font-family: "Comfortaa", cursive;
+    margin-bottom: 10px;
+  }
+  &__wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  &__price {
+    font-size: 36px;
+  }
+}
+
+@media (max-width: 425px) {
+  .card {
+    &:first-child {
+      margin-top: 0 !important;
+    }
+    &__image {
+      max-height: 180px;
+      max-width: 140px;
+    }
+    &__description {
+      font-size: 16px;
+    }
+    &__price {
+      font-size: 22px;
+    }
+    &__title {
+      font-size: 24px;
+    }
+    &__delete {
+      font-size: 14px;
+    }
+  }
+}
+@media (max-width: 320px) {
+  .card {
+    &:first-child {
+      margin-top: 0 !important;
+    }
+    &__image {
+      max-height: 180px;
+      max-width: 140px;
+    }
+    &__description {
+      font-size: 16px;
+    }
+    &__price {
+      font-size: 22px;
+    }
+    &__title {
+      font-size: 24px;
+    }
+    &__delete {
+      font-size: 14px;
+    }
   }
 }
 </style>

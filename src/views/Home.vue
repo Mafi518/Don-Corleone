@@ -1,6 +1,6 @@
 <template>
   <section class="home change-background" id="home">
-    <div class="home__left">
+    <div class="home__left" ref="homeLeft">
       <div class="don-prompt-1" v-if="INFO.length === 0">
         <img src="@/assets/images/don-prompt-1.png" alt="" />
         <p>Стоит нажать на один из пончиков...</p>
@@ -12,7 +12,7 @@
         <catalog></catalog>
       </div>
     </div>
-    <button class="cart-icon" @click="cartShow">
+    <button class="cart-icon" ref="cartIcon" @click="cartShow">
       <p class="cart-quantity">{{ CART.length }}</p>
       <icon class="first-level-icon" name="cart" />
     </button>
@@ -47,9 +47,13 @@ export default {
     ...mapGetters(["CART", "INFO"]),
   },
   mounted() {
-    document.querySelector(".cart-icon").addEventListener("click", function () {
-      this.style.display = "none";
-    });
+    if (window.innerWidth <= 1000) {
+      document.querySelector(".menu__social").appendChild(this.$refs.cartIcon);
+    }
+    this.$refs.cartIcon.addEventListener(
+      "click",
+      () => (this.$refs.cartIcon.style.display = "none")
+    );
   },
   methods: {
     setFirstIconLevelColor() {
@@ -66,13 +70,12 @@ export default {
         gsap.fromTo(
           ".cart",
           0.5,
-          { transform: "translate(-100%)", display: 'none' },
-          { transform: "translate(0%)", display: 'flex' }
+          { transform: "translate(-100%)", display: "none" },
+          { transform: "translate(0%)", display: "flex" }
         );
-      } 
+      }
     },
-    cartHide() {
-    },
+    cartHide() {},
   },
 };
 </script>
@@ -132,7 +135,61 @@ export default {
   img {
     margin-bottom: 40px;
   }
-  p {
+}
+
+@media (max-width: 1680px) {
+  .home__left,
+  .cart,
+  .modal {
+    min-width: 60vw;
+  }
+}
+@media (max-width: 1000px) {
+  .home {
+    flex-direction: column;
+    &__left {
+      position: relative;
+      height: 60vh;
+    }
+    &__catalog {
+      background-color: #fff;
+      overflow-y: hidden;
+      padding: 0;
+      overflow-x: auto;
+      height: auto;
+      bottom: 0;
+      position: absolute;
+      display: flex;
+      align-items: flex-end;
+    }
+  }
+  .cart-icon {
+    position: relative;
+    max-width: 48px;
+    max-height: 48px;
+    bottom: 0;
+    left: 0;
+  }
+  .cart-quantity {
+    padding: 4px;
+  }
+  .cart-icon svg {
+    width: 48px;
+    height: 48px;
+  }
+
+  .home__left,
+  .modal,
+  .home__catalog {
+    width: 100vw;
+  }
+}
+@media (max-width: 320px) {
+  .home {
+    &__left {
+      align-items: flex-end;
+      padding-bottom: 10px;
+    }
   }
 }
 </style>

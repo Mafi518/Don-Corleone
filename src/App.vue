@@ -1,6 +1,6 @@
 <template>
   <nav id="nav" class="menu">
-    <div class="menu__social">
+    <div class="menu__social" ref="menuSocial">
       <button class="menu__navigation" @click="menuShow">
         <Icon name="navigation" class="first-level-icon"></Icon>
       </button>
@@ -9,7 +9,7 @@
           <router-link to="/about">О компании</router-link>
         </li>
         <li class="menu__item">
-          <router-link to="/settings">Настройки</router-link>
+          <router-link to="">Настройки</router-link>
         </li>
         <li class="menu__item">
           <router-link to="/">Главная</router-link>
@@ -25,23 +25,19 @@
         ><Icon class="first-level-icon" name="vk"></Icon
       ></a>
     </div>
-    <div class="menu__info">
-      <div class="menu__location">
-        <Icon name="location" class="second-level-icon"></Icon>
-        <span
-          >Санкт-Петербург <br />
-          Москва</span
-        >
-      </div>
-      <div class="menu__phone">
-        <Icon name="phone" class="second-level-icon"></Icon>
-        <span
-          >22 3333 333 9 <br />
-          22 3333 333 9</span
-        >
-      </div>
-      <Icon name="logo" class="logo second-level-icon"></Icon>
+    <div class="menu__info" ref="menuInfo"></div>
+    <div class="menu__location">
+      <Icon name="location" class="second-level-icon"></Icon>
+      <span
+        >Санкт-Петербург <br />
+        Москва</span
+      >
     </div>
+    <a href="tel:+22 3333 333 9" class="menu__phone">
+      <Icon name="phone" class="second-level-icon"></Icon>
+      <span> 22 3333 333 9</span>
+    </a>
+    <Icon name="logo" class="logo second-level-icon"></Icon>
   </nav>
   <router-view class="router-view" />
 </template>
@@ -61,34 +57,6 @@ export default {
     };
   },
   methods: {
-    setChangedColors() {
-      setTimeout(() => {
-        let getBackgroundColor = localStorage.getItem(
-          "changed-background-color"
-        );
-        let getFirstLevelIconColor = localStorage.getItem(
-          "changed-first-level-icon-color"
-        );
-        let getSecondLevelIconColor = localStorage.getItem(
-          "changed-second-level-icon-color"
-        );
-        let fli = document.querySelectorAll(".first-level-icon path");
-        fli.forEach((element) => {
-          element.setAttribute("style", `fill: ${getFirstLevelIconColor}`);
-        });
-        let sli = document.querySelectorAll(".second-level-icon path");
-        sli.forEach((element) => {
-          element.setAttribute("style", `fill: ${getSecondLevelIconColor}`);
-        });
-        let bg = document.querySelectorAll(".change-background");
-        bg.forEach((element) => {
-          element.setAttribute(
-            "style",
-            `background-color: ${getBackgroundColor}`
-          );
-        });
-      }, 50);
-    },
     createPopup(subtitle) {
       document.querySelector("#app").insertAdjacentHTML(
         "afterbegin",
@@ -150,6 +118,7 @@ export default {
     },
   },
   mounted() {
+    document.title = "Don Corleone";
     document
       .querySelector(".menu__navigation")
       .addEventListener("click", () => {
@@ -162,9 +131,6 @@ export default {
     document.querySelectorAll(".menu__item").forEach((element) => {
       element.addEventListener("click", this.menuHide);
     });
-    setInterval(() => {
-      this.setChangedColors();
-    }, 100);
   },
 };
 </script>
@@ -178,9 +144,13 @@ body {
 #nav {
   z-index: 10;
 }
+a {
+  color: $brown;
+}
 .menu {
   position: absolute;
   width: 100%;
+  height: 104px;
   margin: 0 auto;
   display: flex;
   align-items: center;
@@ -188,6 +158,7 @@ body {
   &__social {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     max-width: 50vw;
     width: 100%;
     height: 100%;
@@ -292,5 +263,68 @@ body {
   }
 }
 
+.logo {
+  min-width: 64px;
+}
 
+@media (max-width: 1680px) {
+  .menu {
+    &__info {
+      width: 40vw;
+    }
+    &__social {
+      max-width: 60vw;
+    }
+  }
+}
+@media (max-width: 1140px) {
+  .logo {
+    display: none;
+  }
+  .menu {
+    &__info {
+      padding: 0;
+    }
+  }
+}
+@media (max-width: 1000px) {
+  .menu {
+    &__info,
+    &__social {
+      background-color: transparent;
+    }
+    &__network {
+      margin: 0;
+    }
+  }
+}
+@media (max-width: 768px) {
+  .menu {
+    width: 100vw;
+    &__info {
+      display: none;
+    }
+    &__social {
+      max-width: 100vw;
+    }
+  }
+}
+@media (max-width: 425px) {
+  .menu {
+    height: 60px;
+    &__list {
+      flex-direction: column;
+    }
+    &__item {
+      height: 33.3333vh;
+      width: 100vw;
+    }
+    &__social {
+      padding: 0 5px;
+      svg {
+        max-width: 36px;
+      }
+    }
+  }
+}
 </style>

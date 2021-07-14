@@ -47,7 +47,6 @@ export default {
   justify-content: space-between;
   flex-wrap: wrap;
 }
-
 .catalog-enter-from {
   opacity: 0;
   transform: scale(0.9);
@@ -69,5 +68,17 @@ export default {
 }
 .catalog-leave-active {
   transition: all 0s ease;
+}
+
+@media (max-width: 1680px) {
+  .catalog {
+    justify-content: center;
+  }
+}
+@media (max-width: 1000px) {
+  .catalog {
+    flex-wrap: nowrap;
+    justify-content: space-between;
+  }
 }
 </style>

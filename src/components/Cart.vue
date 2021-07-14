@@ -54,7 +54,9 @@
         <p class="modal__error"></p>
       </transition>
     </label>
-    <p class="modal__payment">Оплата наличными или картой при получении заказа</p>
+    <p class="modal__payment">
+      Оплата наличными или картой при получении заказа
+    </p>
     <button type="submit" class="modal__submit" @click.prevent="submit">
       Заказать – {{ cartTotalSum }}
     </button>
@@ -191,7 +193,7 @@ export default {
         this.isSurNameValid === true &&
         this.isLocationValid === true
       ) {
-        localStorage.setItem("thanks-name", name.value)
+        localStorage.setItem("thanks-name", name.value);
         this.$router.push("thanks");
       }
     },
@@ -326,6 +328,33 @@ export default {
     font-size: 14px;
     max-width: 240px;
     text-align: center;
+  }
+}
+@media (max-width: 1000px) {
+  .cart,
+  .modal {
+    width: 100vw;
+  }
+}
+@media (max-width: 425px) {
+  .modal {
+    padding-top: 100px;
+    flex-direction: row;
+    &__label {
+      margin-bottom: 20px;
+    }
+  }
+}
+@media (max-width: 320px) {
+  .cart {
+    padding-bottom: 0;
+    &__wrapper {
+      margin-top: 40px;
+      margin-bottom: 20px;
+    }
+    &__button {
+      font-size: 16px;
+    }
   }
 }
 </style>

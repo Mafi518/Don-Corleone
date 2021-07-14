@@ -7,5 +7,5 @@ export default {
   },
   INFO(state) {
     return state.info;
-  }
+  },
 };

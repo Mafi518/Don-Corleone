@@ -95,14 +95,60 @@ export default {
   transition-delay: 0.1s;
 }
 .list-leave-from {
-  opacity: 1;
-  transform: scale(1);
+  position: absolute;
+  display: none;
 }
 .list-leave-to {
-  opacity: 0;
-  transform: scale(0.9);
+  position: absolute;
+  display: none;
 }
 .list-leave-active {
-  transition: all 0s ease;
+  transition: all 0.5s ease;
+}
+@media (max-width: 1000px) {
+  .description {
+    &__title {
+      font-size: 56px;
+    }
+    &__image {
+      min-height: 460px;
+    }
+  }
+}
+@media (max-width: 425px) {
+  .description {
+    &__title {
+      font-size: 38px;
+      margin-bottom: 5px;
+    }
+    &__subtitle {
+      font-size: 16px;
+      margin-bottom: 15px;
+    }
+    &__image {
+      min-height: 200px;
+    }
+    &__price {
+      font-size: 34px;
+    }
+  }
+}
+@media (max-width: 320px) {
+  .description {
+    &__title {
+      font-size: 32px;
+      margin-bottom: 5px;
+    }
+    &__subtitle {
+      font-size: 14px;
+      margin-bottom: 15px;
+    }
+    &__image {
+      min-height: 200px;
+    }
+    &__price {
+      font-size: 28px;
+    }
+  }
 }
 </style>
